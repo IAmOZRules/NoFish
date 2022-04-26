@@ -1,0 +1,157 @@
+{
+  "columns": [
+    {
+      "minWidth": 40,
+      "download": false,
+      "formatter": "rowSelection",
+      "titleFormatter": "rowSelection",
+      "resizable": true,
+      "headerSort": false,
+      "width": 52
+    },
+    {
+      "field": "Have_IP",
+      "title": "Have_IP",
+      "width": 106,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Have_At",
+      "title": "Have_At",
+      "width": 107,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "URL_Length",
+      "title": "URL_Length",
+      "width": 130,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "URL_Depth",
+      "title": "URL_Depth",
+      "width": 125,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Redirection",
+      "title": "Redirection",
+      "width": 127,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "https_Domain",
+      "title": "https_Domain",
+      "width": 143,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "TinyURL",
+      "title": "TinyURL",
+      "width": 107,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Prefix/Suffix",
+      "title": "Prefix/Suffix",
+      "width": 130,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "DNS_Record",
+      "title": "DNS_Record",
+      "width": 134,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Web_Traffic",
+      "title": "Web_Traffic",
+      "width": 127,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Domain_Age",
+      "title": "Domain_Age",
+      "width": 136,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Domain_End",
+      "title": "Domain_End",
+      "width": 135,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "iFrame",
+      "title": "iFrame",
+      "width": 99,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Mouse_Over",
+      "title": "Mouse_Over",
+      "width": 134,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Right_Click",
+      "title": "Right_Click",
+      "width": 124,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    },
+    {
+      "field": "Web_Forwards",
+      "title": "Web_Forwards",
+      "width": 147,
+      "minWidth": 40,
+      "resizable": true,
+      "sorter": "number",
+      "headerSort": true
+    }
+  ]
+}

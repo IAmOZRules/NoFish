@@ -14,9 +14,10 @@ import pickle
 
 
 def getDomain(url):
-    domain = urlparse(url).netloc
-    if re.match(r"^www.", domain):
-        domain = domain.replace("www.", "")
+    try:
+        domain = urlparse(url).netloc
+    except:
+        domain = ""
     return domain
 
 # 2.Checks for IP address in URL (Have_IP)
@@ -123,9 +124,10 @@ def web_traffic(url):
         rank = BeautifulSoup(urllib.request.urlopen("http://data.alexa.com/data?cli=10&dat=s&url=" + url).read(), "xml").find(
             "REACH")['RANK']
         rank = int(rank)
+        print(rank)
     except TypeError:
         return 1
-    if rank < 100000:
+    if rank > 100000:
         return 1
     else:
         return 0
@@ -147,12 +149,11 @@ def domainAge(domain_name):
     elif ((type(expiration_date) is list) or (type(creation_date) is list)):
         return 1
     else:
-        ageofdomain = abs((expiration_date - creation_date).days)
-        if ((ageofdomain/30) < 6):
-            age = 1
+        ageofdomain = (expiration_date - creation_date).days / 30
+        if ageofdomain > 12:
+            return 0
         else:
-            age = 0
-    return age
+            return 1
 
 # 14.End time of domain: The difference between termination time and current time (Domain_End)
 
@@ -171,10 +172,10 @@ def domainEnd(domain_name):
     else:
         today = datetime.now()
         end = abs((expiration_date - today).days)
-        if ((end/30) < 6):
-            end = 0
-        else:
+        if ((end/30) < 12):
             end = 1
+        else:
+            end = 0
     return end
 
 # 15. IFrame Redirection (iFrame)
@@ -185,9 +186,9 @@ def iframe(response):
         return 1
     else:
         if re.findall(r"[<iframe>|<frameBorder>]", response.text):
-            return 0
-        else:
             return 1
+        else:
+            return 0
 
 # 16.Checks the effect of mouse over on status bar (Mouse_Over)
 
@@ -209,9 +210,9 @@ def rightClick(response):
         return 1
     else:
         if re.findall(r"event.button ?== ?2", response.text):
-            return 0
-        else:
             return 1
+        else:
+            return 0
 
 # 18.Checks the number of forwardings (Web_Forwards)
 
@@ -268,13 +269,15 @@ def featureExtraction(url):
     features = pd.DataFrame(features).T
     features.columns = ["Have_IP", "Have_At", "URL_Length", "URL_Depth", "Redirection", "https_Domain", "TinyURL",
                         "Prefix/Suffix", "DNS_Record", "Web_Traffic", "Domain_Age", "Domain_End", "iFrame", "Mouse_Over", "Right_Click", "Web_Forwards"]
+    
+    # save features to csv file
+    features.to_csv("features.csv", index=False)
     return features
 
 
 # Function to predict the phishing status
 def predictResult(URL):
     features = featureExtraction(URL)
-    # autoencoder = pickle.load(open("Models/AutoEncoderNN.pickle.dat", 'rb'))
     tree = pickle.load(open("Models/DecisionTree.pickle.dat", 'rb'))
     mlp = pickle.load(open("Models/MultiLayerPerceptron.pickle.dat", 'rb'))
     forest = pickle.load(open("Models/RandomForest.pickle.dat", 'rb'))
@@ -283,14 +286,14 @@ def predictResult(URL):
 
     # Predicting the phishing status using the models
     preds = {
-        # "AutoEncoderNN": autoencoder.predict(features),
-        "DecisionTree": tree.predict(features),
-        "MultiLayerPerceptron": mlp.predict(features),
-        "RandomForest": forest.predict(features),
-        "SupportVectorMachine": svm.predict(features),
-        "XGBoostClassifier": xgb.predict(features)
+        "DecisionTree": tree.predict(features)[0],
+        "MultiLayerPerceptron": mlp.predict(features)[0],
+        "RandomForest": forest.predict(features)[0],
+        "SupportVectorMachine": svm.predict(features)[0],
+        "XGBoostClassifier": xgb.predict(features)[0]
     }
 
     print(preds)
 
-print(predictResult("http://thisisamaliciousurl.com/"))
+print(web_traffic("https://www.google.com"))
+print(predictResult("http://www.google.com"))

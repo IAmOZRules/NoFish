@@ -1,0 +1,87 @@
+{
+  "fields": [
+    {
+      "name": "Have_IP",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Have_At",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "URL_Length",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "URL_Depth",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Redirection",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "https_Domain",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "TinyURL",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Prefix/Suffix",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "DNS_Record",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Web_Traffic",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Domain_Age",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Domain_End",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "iFrame",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Mouse_Over",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Right_Click",
+      "type": "integer",
+      "format": "default"
+    },
+    {
+      "name": "Web_Forwards",
+      "type": "integer",
+      "format": "default"
+    }
+  ],
+  "missingValues": [
+    ""
+  ]
+}
